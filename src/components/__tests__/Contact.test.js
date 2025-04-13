@@ -3,6 +3,18 @@ import Contact from "../Contact"
 import "@testing-library/jest-dom"
 
 describe("Contact Us page test cases",()=>{
+   beforeAll(()=>{
+      // console.log("before All")
+   })
+   beforeEach(()=>{
+      // console.log("before All")
+   })
+   afterAll(()=>{
+      // console.log("before All")
+   })
+   afterEach(()=>{
+      // console.log("before All")
+   })
     test('should load Contact component on JSDOM', () => {
         render(<Contact/>);
         const heading = screen.getByRole("heading");

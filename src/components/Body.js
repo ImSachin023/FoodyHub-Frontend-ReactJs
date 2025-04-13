@@ -38,7 +38,7 @@ const Body = () => {
 
   const {loggedInUser,setuserName} = useContext(Usercontext)
 
-  return !listofRestaurents.length ? (
+  return !listofRestaurents?.length ? (
     <Shimmer />
   ) : (
     <div className="">
@@ -46,6 +46,7 @@ const Body = () => {
         <div className="search m-4 p-4 px-4">
           <input
             type="text"
+            data-testid="searchInput"
             className="border border-solid-black rounded-sm"
             value={searchText}
             onChange={(e) => {
@@ -66,7 +67,7 @@ const Body = () => {
         </div>
         <div className="m-4 p-4  flex items-center">
           <button
-            className="px-4 py-2 bg-cyan-100  rounded-lg "
+            className="px-4 py-2 bg-cyan-100  rounded-lg cursor-pointer"
             onClick={() => {
               const filteredList = listofRestaurents.filter(
                 (res) => res.info.avgRating > 4
