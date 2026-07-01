@@ -23,7 +23,7 @@ const Contact = () => {
               <div>
                 <h3 className="font-semibold">📧 Email</h3>
                 <p className="text-gray-600">
-                  support@foodyhub.com
+                  sachinabx3@gmail.com
                 </p>
               </div>
             </div>

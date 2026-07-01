@@ -41,7 +41,7 @@ const groceryItems = [
 
 const Grocery = () => {
   return (
-    <div className="min-h-screen bg-gray-100 py-10 px-5">
+    <div className="min-h-screen bg-gray-100 p-12 m-6">
       {/* Heading */}
       <div className="text-center mb-10">
         <h1 className="text-4xl font-bold text-green-700">
@@ -53,7 +53,7 @@ const Grocery = () => {
       </div>
 
       {/* Banner */}
-      <div className="bg-green-600 text-white rounded-2xl p-10 flex flex-col md:flex-row justify-between items-center mb-12">
+      <div className="bg-green-600 text-white rounded-2xl p-6 flex flex-col md:flex-row justify-between items-center mb-12">
         <div>
           <h2 className="text-3xl font-bold mb-3">
             Fresh & Healthy Grocery
@@ -89,10 +89,10 @@ const Grocery = () => {
             <img
               src={item.image}
               alt={item.name}
-              className="h-52 w-full object-cover"
+              className="h-70 w-full object-cover"
             />
 
-            <div className="p-5 text-center">
+            <div className="p-3 text-center">
               <h3 className="text-xl font-semibold">{item.name}</h3>
 
               <button className="mt-4 bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700">

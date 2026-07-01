@@ -44,7 +44,7 @@ class UserClass extends React.Component {
     // console.log(this.props.name +"child render")
     // const { name, location } = this.props;
     const { count, count2 } = this.state;
-    const { name, location, avatar_url, followers, following } =
+    const { name, location, avatar_url, followers, following, html_url } =
       this.state.userInfo;
 
     return (
@@ -65,13 +65,14 @@ class UserClass extends React.Component {
         })
        }}>Count Dencrease</button> */}
         <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100 p-8">
-          <h1 className="text-4xl font-bold mb-2">Meet the Developer 👨‍💻</h1>
+          <h1 className="text-4xl font-bold mb-2 underline">
+            Meet the Developer{" "}
+          </h1>
 
           <p className="text-gray-600 text-center max-w-2xl mb-8">
-            Hi! I'm a passionate Full Stack Developer who enjoys building
-            modern, responsive, and user-friendly web applications. This Food
-            Ordering App was created using React, Tailwind CSS, Redux Toolkit,
-            React Router, and live APIs to deliver a smooth user experience.
+            Passionate Full Stack Developer dedicated to building fast,
+            responsive, and user-friendly web applications with modern
+            technologies.
           </p>
 
           <div className="bg-white shadow-xl rounded-2xl p-8 flex flex-col items-center w-full max-w-3xl">
@@ -89,7 +90,7 @@ class UserClass extends React.Component {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
               <div className="bg-gray-100 rounded-xl p-4">
-                <h3 className="font-semibold text-lg">📧 Email</h3>
+                <h3 className="font-semibold text-lg">✉ Email</h3>
                 <p className="text-gray-600">sachinabx3@gmail.com</p>
               </div>
 
@@ -111,8 +112,8 @@ class UserClass extends React.Component {
               </div>
             </div>
 
-            <button className="mt-8 bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition">
-              Connect With Me
+            <button onClick={() => window.open(html_url)} className="mt-8 bg-black text-white px-8 py-3 rounded-lg font-bold transition">
+              Github Profile
             </button>
           </div>
         </div>
