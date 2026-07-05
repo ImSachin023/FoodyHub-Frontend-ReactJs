@@ -8,6 +8,7 @@ import { CDN_URL } from "../utils/constants";
 const Body = () => {
   const [listofRestaurents, setlistofRestaurent] = useState([]);
   const [filteredRestaurents, setfilteredRestaurent] = useState([]);
+  const [Restaurent, setRestaurent] = useState([]);
   const [bannerImg, setBannerImg] = useState([]);
   const [searchText, setSearchText] = useState("");
 
@@ -43,6 +44,10 @@ const Body = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants,
     );
+    setRestaurent(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants,
+    );
     setBannerImg(bannerImages);
   };
 
@@ -50,18 +55,14 @@ const Body = () => {
   if (onlineStatus === false)
     return <h1>You're Offline!!! Please Check your Internet Connection</h1>;
 
-  const scrollRef = useRef(null);
+  const bannerRef = useRef(null);
+  const restaurantRef = useRef(null);
 
-  const scrollLeft = () => {
-    scrollRef.current.scrollBy({
-      left: -300,
-      behavior: "smooth",
-    });
-  };
+  const scroll = (ref, direction) => {
+    if (!ref.current) return;
 
-  const scrollRight = () => {
-    scrollRef.current.scrollBy({
-      left: 300,
+    ref.current.scrollBy({
+      left: direction === "left" ? -350 : 350,
       behavior: "smooth",
     });
   };
@@ -71,34 +72,9 @@ const Body = () => {
   return !listofRestaurents?.length ? (
     <Shimmer />
   ) : (
-    <div className="w-100% h-100% ">
+    <div className="w-100% h-100% p-10 ">
       <div className="flex flex-col items-center justify-center">
-        <div className="flex flex-row items-center justify-between">
-          {/* <div className="search m-4 p-4 px-4 w-100% flex items-center justify-center">
-            <input
-              type="text"
-              data-testid="searchInput"
-              className="border border-solid-black rounded-sm w-200 h-10"
-              placeholder="  Search Restaurent"
-              value={searchText}
-              onChange={(e) => {
-                setSearchText(e.target.value);
-              }}
-            />
-            <button
-              className="bg-blue-500 rounded-md w-25 h-10 text-white"
-              onClick={() => {
-                const filteredRestaurents = listofRestaurents.filter((res) =>
-                  res.info.name
-                    .toLowerCase()
-                    .includes(searchText.toLowerCase()),
-                );
-                setfilteredRestaurent(filteredRestaurents);
-              }}
-            >
-              Search
-            </button>
-          </div> */}
+        <div>
           {/* <div className="mx-10">
             <button
               className="px-4 py-2 bg-red-700 rounded-sm cursor-pointer text-white end-3"
@@ -120,36 +96,30 @@ const Body = () => {
          onChange={(e)=>setuserName(e.target.value)} />
         </div> */}
       </div>
-      <div className="my-6 h-[2px] bg-gradient-to-r from-transparent" />
       <div className="flex flex-col bg-white ">
         <div className=" flex flex-row items-center justify-between">
           <h1 className="ml-10 font-bold text-3xl py-2 underline ">
-          what's on your mind?
-        </h1>
-        <div className="flex flex-row items-center justify-between gap-2">
+            what's on your mind?
+          </h1>
           <div className="flex justify-end gap-2 mb-4 px-20">
             <button
-              onClick={scrollLeft}
+              onClick={() => scroll(bannerRef, "left")}
               className="w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 font-bold"
             >
               🡠
             </button>
 
             <button
-              onClick={scrollRight}
+              onClick={() => scroll(bannerRef, "right")}
               className="w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 font-bold"
             >
               🡢
             </button>
-            <div
-              ref={scrollRef}
-              className="flex gap-4 overflow-x-auto no-scrollbar"
-            ></div>
           </div>
         </div>
-        </div>
+        {/* banner images */}
         <div
-          ref={scrollRef}
+          ref={bannerRef}
           className="flex flex-row gap-6 px-4 overflow-x-auto no-scrollbar py-3"
         >
           {bannerImg.map((banner) => (
@@ -163,25 +133,57 @@ const Body = () => {
         </div>
       </div>
       <div className="my-6 h-[2px] bg-gradient-to-r from-transparent via-gray-400 to-transparent" />
-      <h1 className=" font-bold text-4xl underline px-10 py-4">
-        Top restaurant chains
-      </h1>
-      <div className="w-100% h-50% px-20 flex flex-wrap">
+
+      {/* restaurant cards */}
+      <div className="flex flex-row items-center justify-between">
+        <h1 className=" font-bold text-4xl underline px-10 py-4">
+          Top restaurant chains
+        </h1>
+        <div className="flex justify-end gap-2 mb-4 px-20 ">
+          <button
+            onClick={() => scroll(restaurantRef, "left")}
+            className="w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 font-bold"
+          >
+            🡠
+          </button>
+
+          <button
+            onClick={() => scroll(restaurantRef, "right")}
+            className="w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 font-bold"
+          >
+            🡢
+          </button>
+        </div>
+      </div>
+      <div
+        ref={restaurantRef}
+        className="w-100% h-50% px-20 flex flex-row gap-6 overflow-x-auto no-scrollbar scroll-smooth"
+      >
         {filteredRestaurents.map((restaurent) => (
           <Link
             key={restaurent.info.id}
             to={"/restaurent/" + restaurent.info.id}
           >
             <RestaurantCard key={restaurent.info.id} resData={restaurent} />
-            {/* {restaurent.info.availability.opened ? (
-              <RestaurentCardPromoted
-                key={restaurent.info.id}
-                resData={restaurent}
-              />
-            ) : (
-            )} */}
           </Link>
         ))}
+      </div>
+      <div className="my-6 h-[2px] bg-gradient-to-r from-transparent via-gray-400 to-transparent" />
+      <div className="flex flex-col">
+        <h1 className="font-bold text-4xl underline px-10 py-4">
+          Restaurants with online food delivery
+        </h1>
+
+        <div className="px-20 flex flex-wrap ">
+          {Restaurent.map((restaurant) => (
+            <Link
+              key={restaurant.info.id}
+              to={"/restaurent/" + restaurant.info.id}
+            >
+              <RestaurantCard resData={restaurant} />
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
