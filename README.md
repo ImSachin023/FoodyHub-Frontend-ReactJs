@@ -2,7 +2,7 @@
 
 ## 📖 About The Project
 
-**FoodyHub** is a food-ordering web application built with React that lets users browse restaurants, search by name, filter top-rated options, view menus, and manage a shopping cart — all pulling live restaurant data from an API with a clean, responsive UI.
+FoodyHub is a food-ordering web application built with React that lets users browse restaurants, search by name, filter top-rated options, view menus, and manage a shopping cart — all pulling live restaurant data from an API with a clean, responsive UI.
 
 > ⚠️ Add your live deployment link at the top of this README once hosted (Vercel/Netlify) — it's the single highest-impact addition you can make for recruiters.
 
