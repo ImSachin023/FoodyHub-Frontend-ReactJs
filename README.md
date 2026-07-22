@@ -38,7 +38,6 @@ FoodyHub is a food-ordering web application built with React that lets users bro
 | **Language** | JavaScript (ES6+) |
 
 ---
-
 ## 📂 Project Structure
 
 ```
@@ -110,7 +109,5 @@ npm test
 ## 📄 License
 
 This project is open source — feel free to explore, fork, and learn from it.
-
 ---
-
 ⭐ If you found this project helpful, consider starring the repo!
