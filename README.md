@@ -53,6 +53,7 @@ FoodyHub-Frontend-ReactJs/
 ├── jest.config.js
 └── package.json
 ```
+---
 ## 🚀 Getting Started
 
 ### Prerequisites
