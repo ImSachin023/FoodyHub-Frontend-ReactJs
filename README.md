@@ -8,7 +8,6 @@ FoodyHub is a food-ordering web application built with React that lets users bro
 
 ## ✨ Features
 
-
 - 🍽️ **Browse Restaurants** — live restaurant listings pulled from an API
 - 🔍 **Search** — find restaurants by name in real time
 - ⭐ **Top-Rated Filter** — quickly surface highly-rated restaurants
